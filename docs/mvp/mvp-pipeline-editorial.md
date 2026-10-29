@@ -14,7 +14,7 @@ La fábrica debe reutilizar un núcleo de planificación, escritura, QA y produc
 
 | Capa | Responsabilidad |
 |---|---|
-| Núcleo común | Intake, definición de público y promesa, planificación, escritura por secciones, revisión de claridad, consistencia, corrección, diseño/exportación y trazabilidad. |
+| Núcleo común | Intake, definición de público y promesa, planificación, escritura por secciones, edición sustantiva y de línea, corrección lingüística por variante, QA, diseño de portada frontal para ebook, producción y trazabilidad. |
 | Perfil de género | Define estructura narrativa o didáctica, artefactos intermedios, pruebas de calidad, límites de contenido y estilo editorial propios del género. |
 | Orquestador | Selecciona el perfil, valida entradas, gestiona versiones y estados, exige gates y enruta correcciones a la etapa responsable. |
 | Revisión humana | Decide enfoque, contenido, adecuación al público y publicación; puede aprobar, rechazar o solicitar cambios en cada gate. |
@@ -36,11 +36,11 @@ Estos son perfiles configurables, no una promesa de que cada género ya está va
 - **Primer piloto completo:** *IA útil en el trabajo*, título provisional, para probar el perfil educativo/no ficción de principio a fin.
 - **Prueba mínima de generalidad:** un relato breve de misterio como segundo perfil, para comprobar que la arquitectura también maneja ficción, continuidad y pistas. Es una prueba técnica/editorial, no necesariamente un segundo ebook comercial.
 - **Objetivo de la fábrica:** admitir perfiles de cualquier género mediante configuración modular; el MVP no pretende validar exhaustivamente todos los géneros ni producir varios libros en paralelo.
-- **Idiomas y mercados:** español e inglés, tratados como mercados editoriales de primera clase. La geografía y variante lingüística inicial de cada edición están por definir.
-- **Lector propuesto:** personas hispanohablantes y angloparlantes que usan herramientas digitales en tareas de oficina, tienen poca o ninguna experiencia con IA generativa y necesitan ayuda práctica para redactar, resumir y organizar trabajo. Es una hipótesis que se validará por separado en cada idioma.
+- **Idiomas y mercados:** español de México (`es-MX`) e inglés de Estados Unidos (`en-US`). Las ediciones se localizarán y validarán por separado; los resultados de un mercado no se generalizarán automáticamente al otro.
+- **Lector propuesto:** personas que usan herramientas digitales en tareas de oficina, tienen poca o ninguna experiencia con IA generativa y necesitan ayuda práctica para redactar, resumir y organizar trabajo. Es una hipótesis editorial; se evaluará con datos de lanzamiento, no con entrevistas previas.
 - **Resultado esperado:** las personas lectoras practican cómo usar una herramienta de IA para redactar un correo, resumir un texto, preparar una reunión y convertir notas en acciones; además, revisan el resultado antes de usarlo.
-- **Contenido del piloto educativo:** un mismo libro conceptual con ediciones localizadas en español e inglés, además de brief, dossier de investigación, propuesta e índice, muestras, validación de lectores por idioma, manuscritos sujetos a aprobación y QA editorial.
-- **Fuera de alcance:** automatizar publicación, traducciones, producir un catálogo o afirmar que los perfiles están listos para uso comercial sin probarlos. La fábrica no promete exactitud ni calidad uniforme sin revisión.
+- **Contenido del piloto educativo:** un mismo libro conceptual con ediciones localizadas en español e inglés, además de brief, dossier de investigación, propuesta e índice, muestras, manuscritos sujetos a aprobación, QA editorial y una prueba pública de mercado medida por idioma.
+- **Fuera de alcance:** automatizar la publicación, producir un catálogo o afirmar que los perfiles están listos para uso comercial sin probarlos. La publicación del piloto será una prueba acotada y aprobada por una persona; la fábrica no promete exactitud ni calidad uniforme sin revisión.
 
 ## 4. Parámetros de entrada
 
@@ -51,10 +51,10 @@ El orquestador solicita estos campos. Los campos obligatorios no pueden completa
 | Género y subgénero | Educativo/no ficción para el primer piloto | Obligatorio; activa un perfil de género versionado |
 | Tema | IA aplicada a tareas laborales | Obligatorio |
 | Problema que resuelve / experiencia de lectura | Aprender a completar tareas comunes con IA y revisar las respuestas | Obligatorio; en ficción se concreta como experiencia narrativa esperada |
-| Público objetivo | Se define en el brief de cada libro; para el piloto, ver sección 3 | Debe validarse con lectores |
+| Público objetivo | Se define en el brief de cada libro; para el piloto, ver sección 3 | Tratar como hipótesis y evaluar con métricas de lanzamiento; no afirmar demanda si la exposición fue insuficiente |
 | Edad objetivo y clasificación | Por definir para cada libro | Obligatorio cuando el público o contenido dependa de la edad, en especial infantil y erotismo adulto |
 | Longitud y nivel de lectura | Ebook breve y accesible | Definir antes del outline; no confundir sencillez con empobrecimiento |
-| Idioma y mercado | Español e inglés; países y variantes iniciales por definir | Localizar cada edición y confirmar geografía antes de investigación local o publicación; no asumir que traducir equivale a adaptar |
+| Idioma y mercado | Español de México (`es-MX`) e inglés de Estados Unidos (`en-US`) | Localizar cada edición para su mercado y validar por separado; no asumir que traducir equivale a adaptar ni generalizar resultados entre mercados |
 | Formato final | Ebook; EPUB/PDF por decidir | No iniciar producción final hasta decidir |
 | Herramientas mencionadas | Enfoque neutral, centrado en capacidades | Cada recomendación requiere evidencia, fecha y revisión |
 | Límites editoriales | Privacidad, verificación, imparcialidad, lenguaje sencillo | Aplican a todas las etapas |
@@ -68,33 +68,38 @@ Cada etapa recibe artefactos versionados y entrega una salida revisable. El orqu
 | 0. Intake y planificación | Brief del solicitante | Brief normalizado, supuestos y preguntas abiertas | No avanzar con campos obligatorios vacíos |
 | 1. Investigación (según perfil) | Brief aprobado | No ficción: dossier de fuentes. Ficción: investigación de ambientación solo si se necesita; hechos comprobables identificados aparte | No inventar fuentes ni presentar ambientación ficticia como hecho |
 | 2. Diseño editorial (según perfil) | Brief y dossier si aplica | No ficción: promesa, índice y objetivos. Ficción: premisa, personajes, arco, mundo, estructura y mapa de capítulos | Presentar título, concepto y diseño al gate humano 1 |
-| 3. Muestra | Diseño aprobado | Capítulo/escena, ejercicio si aplica y lista de comprobación del género | Revisión editorial antes de probar con lectores |
-| 4. Validación con lectores | Material aprobado para prueba en cada idioma | Hallazgos anonimizados y recomendación por idioma: continuar, ajustar o detener | Aplicar los umbrales por idioma de la sección 7; no compensar un resultado débil en un idioma con el otro |
-| 5. Manuscrito | Diseño y validación aprobados | Manuscrito completo con referencias y registro de cambios | Gate humano 2 antes de QA final/producción |
-| 6. QA editorial | Manuscrito versionado | Informe de defectos por severidad y correcciones propuestas | No publicar con defectos críticos abiertos |
-| 7. Producción | Manuscrito aprobado y especificación de formato | EPUB/PDF y reporte de comprobaciones | Gate humano final de publicación |
+| 3. Muestra | Diseño aprobado | Capítulo/escena, ejercicio si aplica y lista de comprobación del género | Revisión editorial; no requiere panel de lectores previo |
+| 4. Manuscrito | Diseño aprobado | Manuscrito completo con referencias y registro de cambios | Pasar a edición editorial |
+| 5. Edición editorial | Manuscrito versionado | Edición sustantiva y de línea, corrección lingüística localizada y registro de cambios | Resolver dudas editoriales; no alterar afirmaciones factuales sin verificar las fuentes |
+| 6. QA editorial | Manuscrito editado | Informe de defectos por severidad y correcciones propuestas | Resolver defectos críticos; Gate humano 2 aprueba la versión corregida antes de producción |
+| 7. Producción | Manuscrito aprobado y especificación de formato | Ebook, portada frontal localizada, metadatos y reporte de comprobaciones | Gate humano final aprueba los archivos y las condiciones de publicación |
+| 8. Prueba de mercado en vivo | Ediciones aprobadas y publicadas en el canal elegido | Informe de exposición, resultados y decisión por idioma | Definir de antemano periodo, métricas y umbrales; analizar `es-MX` y `en-US` por separado |
 
 Las skills no deben cambiar el estado del flujo por sí mismas. Solo el orquestador registra una aprobación explícita y vinculada a la versión exacta revisada.
 
 ## 6. Gates humanos
 
 - **Gate 1, enfoque:** aprobar género, público/edad, título, promesa o experiencia de lectura, límites de contenido y outline. Devolver cambios es una salida válida. No se redacta el libro completo sin esta aprobación.
-- **Gate 2, manuscrito:** aprobar el manuscrito completo y su versión antes de producción.
-- **Gate final, publicación:** aprobar archivos renderizados, metadatos, portada, precio y canal de publicación.
+- **Gate 2, manuscrito editado:** aprobar la versión completa después de edición y QA, antes de producción.
+- **Gate final, publicación:** aprobar ebooks renderizados, portadas localizadas, metadatos, precio, canal, alcance y condiciones de la prueba pública.
 
 Una modificación sustancial posterior a un gate invalida esa aprobación y obliga a revisar de nuevo el material afectado.
 
-## 7. Validación inicial del MVP
+## 7. Prueba de mercado en vivo
 
-Estos números son umbrales de decisión para un piloto cualitativo, no evidencia estadística de demanda de mercado.
+La validación del piloto educativo será una publicación pública, no un estudio con entrevistas o lectores reclutados antes del lanzamiento. La estrategia de partida es publicar solo ebooks, lanzar `es-MX` y `en-US` en la misma ventana y medir durante seis semanas. Los resultados serán señales de mercado, no evidencia estadística ni garantía de demanda futura.
 
-- Entrevistar a **8-12 lectores potenciales por idioma** (16-24 en total), preguntando por tareas recientes, dificultades y soluciones actuales antes de presentar la propuesta. Incluir perfiles de las geografías seleccionadas para el piloto.
-- Probar la muestra localizada con **5 lectores por idioma**, observando si pueden aplicar el ejercicio sin que el facilitador les resuelva los pasos.
-- **Continuar en cada idioma:** al menos 70% de las personas entrevistadas describen una necesidad relacionada sin que se les sugiera la respuesta; al menos 4 de 5 completan el ejercicio con ayuda mínima; nadie termina con una interpretación de riesgo crítico sobre privacidad o verificación.
-- **Ajustar:** el problema se reconoce, pero la promesa, las instrucciones o el ejercicio no se entienden o no se pueden completar.
-- **Detener o replantear:** el problema no aparece espontáneamente en la mayoría de entrevistas, o el contenido induce usos inseguros que no se resuelven con una revisión acotada.
-- Registrar citas anonimizadas y observaciones; no recopilar datos personales que no sean necesarios.
-- Para el relato de misterio, realizar una revisión con lectores del género y una prueba de continuidad: cronología, pistas, sospechosos y resolución. No extrapolar a otros perfiles los resultados del piloto educativo o del misterio.
+- Usar ebook digital como único formato inicial; no añadir edición impresa durante esta prueba.
+- La tarifa de KDP por publicar el ebook es **US$0**; Amazon retiene su parte de las ventas y puede descontar el costo de entrega si se elige la regalía del 70%. Los anuncios son opcionales y se pagan aparte.
+- Publicar las ediciones `es-MX` y `en-US` en la misma ventana, después de completar los gates editoriales y de producción; registrar resultados por separado y no compensar un resultado débil en un idioma con el otro.
+- Planificar promoción acotada y comparable para ambas ediciones; no depender únicamente del descubrimiento orgánico. Definir el presupuesto máximo antes del lanzamiento.
+- Considerar Amazon KDP como canal candidato, sujeto a confirmar disponibilidad en ambos mercados y que sus informes permitan medir la exposición y ventas necesarias.
+- Antes de publicar, definir para cada edición el precio y los umbrales de decisión, además del presupuesto. Mantener seis semanas como duración inicial y no fijar umbrales después de observar los resultados.
+- Registrar las métricas disponibles en el canal, como impresiones o visitas, visitas a la ficha, compras o descargas, conversión, devoluciones, reseñas y costos. Documentar las limitaciones de medición de la plataforma y no recopilar datos personales innecesarios.
+- **Continuar:** alcanzar los umbrales predefinidos con exposición suficiente y sin defectos críticos o señales de daño.
+- **Ajustar:** hay exposición suficiente, pero los resultados quedan por debajo de los umbrales o los comentarios señalan problemas corregibles de promesa, presentación o contenido.
+- **Detener o declarar inconcluso:** hay riesgos críticos no resueltos, o la exposición es insuficiente para distinguir falta de interés de falta de visibilidad. No interpretar cero ventas sin datos de exposición como rechazo del mercado.
+- Para el relato de misterio, mantener la prueba técnica de continuidad: cronología, pistas, sospechosos y resolución. No extrapolar el resultado del piloto educativo a otros perfiles.
 
 ## 8. Guardrails editoriales y de seguridad
 
@@ -118,14 +123,15 @@ El QA verifica, como mínimo:
 - Las afirmaciones factuales tienen referencias rastreables y las limitaciones están bien representadas.
 - No hay contradicciones entre capítulos, instrucciones inseguras ni datos personales reales.
 - Cada edición mantiene ortografía, terminología, tono y naturalidad en la variante lingüística elegida; no se limita a sustituir palabras de una traducción literal.
+- La edición sustantiva y de línea, la corrección lingüística y la portada frontal se revisan para cada variante; no se reutiliza sin adaptación la portada de otro idioma.
 - Se ejecutan las pruebas del perfil activo: por ejemplo, registro de pistas para misterio, coherencia de personajes y trama para ficción, o objetivos de aprendizaje y fuentes para educativo.
-- El índice, enlaces, metadatos y archivos exportados funcionan y se leen correctamente en los formatos elegidos.
+- El índice, enlaces, metadatos, portada y archivos exportados funcionan y se leen correctamente en los formatos elegidos.
 
-El MVP se considera completado cuando el piloto educativo alcanza una decisión documentada en español y otra en inglés, produce manuscritos localizados aprobados en ambos idiomas, y el flujo de ficción produce una muestra de misterio que supera sus pruebas de continuidad. Cada ruta pasa QA y una persona aprueba cada versión final; ambas ediciones del ebook educativo pasan las comprobaciones del formato elegido. La publicación comercial queda fuera de este MVP salvo autorización explícita.
+El MVP se considera completado cuando el piloto educativo produce manuscritos editados y aprobados, portadas localizadas y archivos finales que pasan QA y las comprobaciones del formato elegido; además, se documenta una decisión de la prueba pública para `es-MX` y `en-US` por separado. El flujo de ficción debe producir una muestra de misterio que supere sus pruebas de continuidad. Cada versión final y las condiciones de publicación requieren aprobación humana; si la exposición no alcanza los mínimos acordados, el resultado se registra como inconcluso.
 
 ## 10. Investigación documental inicial
 
-Revisión preliminar de fuentes primarias consultadas el **2026-10-29** para el piloto educativo sobre IA. Esto orienta ese contenido y sus guardrails, pero no demuestra demanda comercial ni sustituye entrevistas; tampoco valida los perfiles de ficción.
+Revisión preliminar de fuentes primarias consultadas el **2026-10-29** para el piloto educativo sobre IA. Esto orienta ese contenido y sus guardrails, pero no demuestra demanda comercial ni valida los perfiles de ficción.
 
 | Fuente | Hallazgo aplicable | Límite |
 |---|---|---|
@@ -138,24 +144,20 @@ Revisión preliminar de fuentes primarias consultadas el **2026-10-29** para el 
 - Enseñar a verificar resultados es requisito central, no un apéndice opcional.
 - Evitar frases universales como “tus datos no se usan para entrenar” o “puedes pegar información del trabajo”. La recomendación provisional es no introducir datos personales, confidenciales o de clientes salvo que las políticas de la organización y las condiciones vigentes de la herramienta lo permitan expresamente.
 - Si se muestran controles de un producto, identificarlos como ejemplo fechado y acompañarlos de una alternativa general: consultar políticas de la organización, condiciones del servicio y configuración de la cuenta.
-- El dossier aún no valida qué perfiles tienen mayor necesidad ni su disposición a leer o comprar el libro. Esa pregunta permanece abierta para entrevistas.
+- El dossier no valida demanda ni disposición a comprar. Esa hipótesis se evaluará con los resultados de la publicación, considerando la exposición y las limitaciones del canal.
 
-## 11. Guía de entrevistas lista para el piloto educativo
+## 11. Decisiones pendientes para el lanzamiento
 
-**Muestra:** 8-12 personas por idioma (español e inglés) que realicen tareas digitales de oficina y tengan experiencia nula o limitada con IA generativa. Intentar incluir más de un tipo de ocupación y las geografías piloto elegidas; registrar el perfil de forma general y anónima.
+La prueba no debe reducirse a publicar y esperar sin fijar cómo se interpretarán los resultados. Antes de producir los archivos finales, completar en el brief:
 
-**Duración:** 20-30 minutos. Preparar versiones localizadas de esta guía en español e inglés, sin traducir literalmente expresiones culturales. No mostrar el título ni explicar la idea hasta completar las preguntas sobre experiencias actuales. No pedir que compartan correos, documentos ni información confidencial.
+- Confirmación del canal (Amazon KDP es candidato) y disponibilidad real por país e idioma.
+- Precio, portada, metadatos y página de venta para cada edición.
+- Presupuesto total de lanzamiento: tarifa de publicación en KDP **US$0**; definir el gasto máximo en anuncios y si se contratarán servicios externos de edición, portada o formato.
+- Plan de visibilidad comparable para ambas ediciones.
+- Métricas que ofrece el canal, exposición mínima necesaria y umbrales para continuar, ajustar o detener.
+- Forma de registrar comentarios y devoluciones respetando la privacidad y las reglas de la plataforma.
 
-1. Cuéntame sobre una tarea reciente de redacción, resumen o preparación de reuniones que te haya tomado esfuerzo.
-2. ¿Qué necesitabas conseguir y cómo lo resolviste?
-3. ¿Qué parte fue más difícil, lenta o propensa a errores?
-4. ¿Qué herramientas o ayudas probaste? ¿Qué funcionó y qué no?
-5. ¿Has usado una herramienta de IA para una tarea similar? Si sí, ¿qué hiciste con la respuesta antes de usarla? Si no, ¿qué te ha frenado?
-6. ¿Qué información no te sentirías cómodo compartiendo con una herramienta de IA en el trabajo? ¿Qué política o permiso consultarías?
-7. (Solo después de las preguntas anteriores) Presentar el título y la promesa provisionales. ¿Qué esperas encontrar en una guía así? ¿Qué parte te resulta poco clara o no te serviría?
-8. ¿Qué tarea concreta tendría que ayudarte a completar para que esta guía te resultara útil?
-
-**Registro por entrevista:** tarea y contexto general, frecuencia aproximada, dificultad descrita espontáneamente, solución actual, uso de IA, forma de revisar resultados, inquietudes de privacidad, reacción a la promesa y citas anonimizadas. Separar observaciones de interpretación; no preguntar “¿lo comprarías?” como evidencia de demanda.
+Si no se alcanza la exposición mínima, la decisión debe ser “inconclusa”, no “sin demanda”.
 
 ## 12. Arranque del proceso: brief y diseño provisionales del piloto educativo
 
@@ -164,11 +166,11 @@ Revisión preliminar de fuentes primarias consultadas el **2026-10-29** para el 
 - **Título en español:** *IA útil en el trabajo* (provisional).
 - **Título de trabajo en inglés:** *Practical AI at Work* (provisional; requiere validación editorial).
 - **Subtítulos:** se adaptarán en cada idioma para conservar la promesa, no necesariamente la redacción literal.
-- **Lector:** perfiles hispanohablante y angloparlante definidos en la sección 3; validar por idioma y concretar geografías iniciales.
+- **Lector:** personas en México para la edición `es-MX` y en Estados Unidos para `en-US`, según la hipótesis de la sección 3; evaluar el desempeño de cada edición por separado tras publicar.
 - **Promesa:** al terminar, el lector podrá completar tareas laborales sencillas con una herramienta de IA y revisar sus respuestas antes de utilizarlas.
 - **No promete:** exactitud garantizada, ahorro de tiempo cuantificado ni sustitución del criterio profesional.
 - **Tareas candidatas:** redactar un correo, resumir un texto, preparar una reunión y convertir notas en una lista de acciones.
-- **Preguntas abiertas:** ¿qué ocupaciones concretas priorizar?, ¿qué países/variantes de español e inglés se probarán primero?, ¿qué formatos se producirán?, ¿qué nivel de privacidad puede explicar el capítulo sin depender de un proveedor específico?
+- **Preguntas abiertas:** ¿qué ocupaciones concretas priorizar?, ¿confirma el canal candidato la disponibilidad y medición necesarias en México y Estados Unidos?, ¿qué precio, presupuesto máximo y umbrales se usarán?, ¿qué nivel de privacidad puede explicar el capítulo sin depender de un proveedor específico?
 
 ### Índice de trabajo para el gate 1
 
@@ -180,4 +182,4 @@ Revisión preliminar de fuentes primarias consultadas el **2026-10-29** para el 
 6. Convertir notas en acciones y responsables.
 7. Una rutina breve para verificar antes de usar o compartir una respuesta.
 
-Este índice es una propuesta para revisión, no una aprobación ni un resultado de investigación. La siguiente etapa ejecutable es definir las geografías piloto y validar el perfil y las tareas con lectores en español e inglés; no se debe iniciar la redacción completa de ninguna edición hasta cerrar los gates correspondientes.
+Este índice es una propuesta para revisión, no una aprobación ni un resultado de investigación. La siguiente etapa es cerrar el perfil, la promesa y el índice en el gate 1; antes de producir los archivos finales, confirmar el canal, definir precios, presupuesto y umbrales y preparar ebooks para una prueba de seis semanas. No se publica ninguna edición sin QA y aprobación humana final.

@@ -1,8 +1,8 @@
 # Ebook Factory
 
-Ebook Factory es una fábrica editorial asistida por IA para planificar, escribir, revisar y producir ebooks claros y accesibles en español e inglés. Está diseñada para admitir distintos géneros —desde cuentos infantiles y ficción hasta libros educativos— mediante un flujo editorial común y perfiles con criterios específicos por género.
+Ebook Factory es una fábrica editorial asistida por IA para planificar, escribir, editar, diseñar portadas y producir ebooks claros y accesibles en español e inglés. Está diseñada para admitir distintos géneros —desde cuentos infantiles y ficción hasta libros educativos— mediante un flujo editorial común y perfiles con criterios específicos por género.
 
-La automatización apoya la investigación, la planificación, la redacción y el control de calidad; no sustituye la decisión editorial humana. El proyecto prioriza fuentes trazables cuando corresponda, revisión humana, adecuación al público, privacidad y validación con lectores.
+La automatización apoya la investigación, la planificación, la redacción y el control de calidad; no sustituye la decisión editorial humana. El proyecto prioriza fuentes trazables cuando corresponda, revisión humana, adecuación al público, privacidad y evaluación de mercado con resultados de lanzamiento.
 
 ## Estado
 
@@ -16,9 +16,9 @@ El proyecto está definiendo su MVP. El primer piloto es un libro educativo sobr
 
 ## Próximos hitos
 
-- Definir países y variantes de español e inglés para la validación inicial.
 - Revisar y aprobar público, promesa, títulos e índice del piloto.
-- Validar por separado las dos ediciones con lectores de cada idioma.
+- Confirmar el canal, precio y umbrales de la prueba de seis semanas; KDP no cobra por publicar ebooks, pero el presupuesto de anuncios y servicios externos sigue pendiente.
+- Preparar y publicar ebooks `es-MX` y `en-US` en la misma ventana, con promoción acotada y resultados medidos por separado.
 - Probar el perfil de misterio antes de ampliar la fábrica a más géneros.
 
 ## Principio de trabajo

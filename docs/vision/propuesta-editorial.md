@@ -11,7 +11,7 @@ La sencillez no consistirá en quitar contenido al azar, sino en seleccionar lo 
 
 ## 2. Lectores potenciales y prioridad
 
-Conviene segmentar por lo que las personas necesitan resolver, no solo por edad o profesión. Esta clasificación es una hipótesis inicial que habrá que comprobar con lectores reales.
+Conviene segmentar por lo que las personas necesitan resolver, no solo por edad o profesión. Esta clasificación es una hipótesis inicial que se evaluará con los resultados de la publicación en cada mercado.
 
 | Segmento | Necesidad principal | Oportunidad | Prioridad |
 |---|---|---|---|
@@ -75,7 +75,7 @@ Esto mantiene los libros sencillos sin volverlos superficiales. El valor no esta
 
 ## 5. Colección y crecimiento
 
-Publicaría primero en español y ampliaría el catálogo solo cuando el primer libro haya sido probado y revisado. Posibles títulos posteriores:
+El piloto del primer libro contempla publicar dos ediciones localizadas: español de México (`es-MX`) e inglés de Estados Unidos (`en-US`). Sus resultados se medirán por separado antes de ampliar el catálogo. Posibles títulos posteriores:
 
 - *Asistentes de IA para organizar tu trabajo*
 - *Cómo verificar las respuestas de la IA*
@@ -86,16 +86,12 @@ Cada título debe resolver un problema distinto. La colección compartiría mét
 
 Las traducciones al inglés o francés deberían adaptarse a sus lectores, no limitarse a traducir literalmente el manuscrito.
 
-## 6. Validación antes de escribir el libro completo
+## 6. Prueba de mercado en vivo
 
-Antes de invertir en el manuscrito, comprobaría tres cosas:
+La primera validación será publicar el libro, no reclutar lectores antes de escribirlo. La estrategia de partida es lanzar solo ebooks, con `es-MX` y `en-US` en la misma ventana, durante seis semanas y con promoción acotada y comparable. Amazon KDP es un canal candidato, pendiente de confirmar disponibilidad e informes por mercado. Antes del lanzamiento, se completarán los gates editoriales y se fijarán precios, presupuesto máximo y umbrales de decisión.
 
-- **Problema:** entrevistar a lectores potenciales y preguntar qué tareas les cuesta resolver y qué han intentado.
-- **Enfoque:** mostrarles el título, la promesa y el índice para saber si entienden rápidamente para quién es el libro.
-- **Utilidad:** preparar un capítulo de muestra con un ejercicio y observar si pueden aplicar lo aprendido sin ayuda adicional.
-
-La decisión de continuar debería basarse en señales concretas: que las personas reconozcan el problema, comprendan la promesa y puedan completar el ejercicio. Las ventas, reseñas y comentarios posteriores ayudarán a decidir si conviene mejorar el libro, crear otro título o adaptar la propuesta.
+Después se revisarán por separado la exposición, las visitas a la ficha, las compras o descargas, las devoluciones, los costos y los comentarios disponibles. Una exposición insuficiente no permite concluir que no existe demanda; los resultados servirán para decidir si ajustar la propuesta, mantenerla o detenerla, sin presentarlos como evidencia estadística.
 
 ## Recomendación
 
-La oportunidad no es publicar muchos libros generados con IA. Es construir una marca reconocible por **explicar con claridad, enseñar con ejemplos y dejar al lector con algo que pueda poner en práctica**. Empezaría con una guía laboral para principiantes, validaría su utilidad y utilizaría lo aprendido para elegir el siguiente libro.
+La oportunidad no es publicar muchos libros generados con IA. Es construir una marca reconocible por **explicar con claridad, enseñar con ejemplos y dejar al lector con algo que pueda poner en práctica**. Empezaría con una guía laboral para principiantes, mediría su desempeño en el mercado real y utilizaría lo aprendido para elegir el siguiente libro.
