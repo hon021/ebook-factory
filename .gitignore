@@ -1,0 +1,16 @@
+# Generated ebook exports
+/exports/
+/dist/
+/build/
+*.epub
+
+# Local secrets and environment settings
+.env
+.env.*
+!.env.example
+
+# Temporary and operating-system files
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
