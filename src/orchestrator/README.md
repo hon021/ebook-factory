@@ -126,7 +126,7 @@ console.log(status);
 
 ## Architecture
 
-See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed design documentation:
+See [ORCHESTRATOR_ARCHITECTURE.md](../../docs/05-reference/ORCHESTRATOR_ARCHITECTURE.md) for detailed design documentation:
 
 - Database schema and relationships
 - State transitions and validation rules
@@ -135,13 +135,19 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed design documentation:
 - Genre profiles and QA checklists
 - Usage examples
 
+## Complete Documentation
+
+- **[Architecture Guide](../../docs/05-reference/ORCHESTRATOR_ARCHITECTURE.md)** — System design, patterns, and database schema
+- **[Implementation Guide](../../docs/05-reference/ORCHESTRATOR_IMPLEMENTATION.md)** — Technical decisions and build process
+- **[Quick Reference](../../docs/05-reference/ORCHESTRATOR_QUICK_REFERENCE.md)** — API reference and common patterns
+- **[Workflow Diagrams](../../docs/05-reference/WORKFLOW_DIAGRAMS.md)** — State diagrams and visual flows
+
 ## Files
 
 - **schema.sql** - Database tables, indexes, views
 - **orchestrator.ts** - Core orchestration logic
 - **stages.ts** - Pipeline stages, validation rules, genre profiles
 - **init.ts** - Database initialization
-- **ARCHITECTURE.md** - Complete design documentation
 
 ## Database
 
