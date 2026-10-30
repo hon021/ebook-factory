@@ -1,0 +1,32 @@
+{
+  "name": "ebook-factory",
+  "version": "0.1.0",
+  "description": "AI-assisted editorial platform for producing high-quality ebooks",
+  "main": "dist/orchestrator/orchestrator.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "node dist/orchestrator/examples.js",
+    "init-db": "node scripts/init-db.js",
+    "dev": "ts-node src/orchestrator/examples.ts",
+    "clean": "rimraf dist"
+  },
+  "keywords": [
+    "ebooks",
+    "editorial",
+    "orchestrator",
+    "workflow"
+  ],
+  "author": "Ebook Factory",
+  "license": "MIT",
+  "dependencies": {
+    "sqlite3": "^5.1.6",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/uuid": "^9.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0",
+    "rimraf": "^5.0.0"
+  }
+}
