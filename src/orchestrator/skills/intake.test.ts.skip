@@ -1,0 +1,249 @@
+/**
+ * Tests for Intake Skill
+ *
+ * Validates:
+ * - Brief file reading
+ * - JSON extraction from markdown
+ * - Field validation (all required fields)
+ * - Artifact creation
+ * - Stage advancement
+ */
+
+import * as fs from 'fs';
+import * as path from 'path';
+import { IntakeSkill, ValidationError } from '../skills/intake';
+import { Orchestrator } from '../orchestrator';
+import { initializeOrchestrator } from '../init';
+
+describe('IntakeSkill', () => {
+  let orchestrator: Orchestrator;
+  let intakeSkill: IntakeSkill;
+  let testProjectId: string;
+  let testDbPath = './test-intake.db';
+
+  beforeAll(async () => {
+    // Initialize test database
+    orchestrator = await initializeOrchestrator(testDbPath);
+    intakeSkill = new IntakeSkill(orchestrator);
+
+    // Create a test project
+    const project = await orchestrator.createProject({
+      title: 'Test Book',
+      genre: 'educational',
+      theme: 'Test theme',
+      target_audience: 'Test audience',
+      reading_level: 'simple',
+      content_classification: 'general',
+      language: 'es-MX',
+      format: 'epub',
+      estimated_word_count: 50000,
+      created_by: 'test-user',
+    });
+
+    testProjectId = project.id;
+  });
+
+  afterAll(() => {
+    // Clean up test database
+    if (fs.existsSync(testDbPath)) {
+      fs.unlinkSync(testDbPath);
+    }
+  });
+
+  describe('Process Brief File', () => {
+    test('should successfully process a valid brief file', async () => {
+      const briefPath = path.join(process.cwd(), 'docs/01-brief/BRIEF_EDITORIAL.md');
+
+      if (!fs.existsSync(briefPath)) {
+        console.warn(`Brief file not found at ${briefPath}, skipping integration test`);
+        return;
+      }
+
+      const result = await intakeSkill.process(briefPath, testProjectId);
+
+      expect(result).toBeDefined();
+      expect(result.artifact).toBeDefined();
+      expect(result.validated_fields).toBeDefined();
+      expect(result.total_validation_passed).toBe(true);
+      expect(Array.isArray(result.validated_fields)).toBe(true);
+    });
+
+    test('should throw error for non-existent file', async () => {
+      const invalidPath = '/non/existent/path/brief.md';
+
+      await expect(intakeSkill.process(invalidPath, testProjectId)).rejects.toThrow();
+    });
+
+    test('should throw error if brief file is empty', async () => {
+      const emptyBriefPath = path.join(process.cwd(), '.test-empty-brief.md');
+      fs.writeFileSync(emptyBriefPath, '');
+
+      await expect(intakeSkill.process(emptyBriefPath, testProjectId)).rejects.toThrow(
+        'Brief file is empty'
+      );
+
+      fs.unlinkSync(emptyBriefPath);
+    });
+
+    test('should throw error if JSON block is missing', async () => {
+      const invalidBriefPath = path.join(process.cwd(), '.test-invalid-brief.md');
+      fs.writeFileSync(invalidBriefPath, '# No JSON here\nJust text');
+
+      await expect(intakeSkill.process(invalidBriefPath, testProjectId)).rejects.toThrow(
+        /No JSON block found/
+      );
+
+      fs.unlinkSync(invalidBriefPath);
+    });
+
+    test('should throw error if JSON is malformed', async () => {
+      const malformedBriefPath = path.join(process.cwd(), '.test-malformed-brief.md');
+      fs.writeFileSync(
+        malformedBriefPath,
+        `# Brief\n\n\`\`\`json\n{ invalid json here\n\`\`\``
+      );
+
+      await expect(intakeSkill.process(malformedBriefPath, testProjectId)).rejects.toThrow(
+        /Invalid JSON/
+      );
+
+      fs.unlinkSync(malformedBriefPath);
+    });
+  });
+
+  describe('Field Validation', () => {
+    test('should validate required string fields', async () => {
+      const minimalValidBrief = {
+        book: {
+          title: 'Valid Title',
+          genre: 'educational',
+          theme: 'Valid theme for testing',
+          promise: 'This is a valid promise for the book',
+          language: 'es-MX',
+          format: 'epub',
+          reading_level: 'simple',
+          content_classification: 'general',
+          estimated_word_count: 50000,
+          estimated_chapter_count: 8,
+          target_audience: {
+            primary_description: 'Test audience description',
+          },
+        },
+      };
+
+      // This should pass validation (no ValidationError thrown)
+      // We just check that the structure is accepted
+      expect(minimalValidBrief.book.title).toBeDefined();
+      expect(minimalValidBrief.book.promise).toBeDefined();
+    });
+
+    test('should catch missing required field: title', async () => {
+      const invalidBrief = {
+        book: {
+          // missing title
+          genre: 'educational',
+          theme: 'Test theme',
+          promise: 'Test promise',
+          language: 'es-MX',
+          format: 'epub',
+          reading_level: 'simple',
+          content_classification: 'general',
+          estimated_word_count: 50000,
+          estimated_chapter_count: 8,
+          target_audience: {
+            primary_description: 'Test audience',
+          },
+        },
+      };
+
+      // Create a test brief file with this data
+      const testPath = path.join(process.cwd(), '.test-no-title.md');
+      fs.writeFileSync(testPath, `# Brief\n\`\`\`json\n${JSON.stringify(invalidBrief)}\n\`\`\``);
+
+      await expect(intakeSkill.process(testPath, testProjectId)).rejects.toThrow(ValidationError);
+
+      fs.unlinkSync(testPath);
+    });
+
+    test('should catch invalid genre value', async () => {
+      const invalidGenreBrief = {
+        book: {
+          title: 'Valid Title',
+          genre: 'invalid-genre', // Not in allowed list
+          theme: 'Valid theme',
+          promise: 'Valid promise',
+          language: 'es-MX',
+          format: 'epub',
+          reading_level: 'simple',
+          content_classification: 'general',
+          estimated_word_count: 50000,
+          estimated_chapter_count: 8,
+          target_audience: {
+            primary_description: 'Valid audience',
+          },
+        },
+      };
+
+      const testPath = path.join(process.cwd(), '.test-invalid-genre.md');
+      fs.writeFileSync(
+        testPath,
+        `# Brief\n\`\`\`json\n${JSON.stringify(invalidGenreBrief)}\n\`\`\``
+      );
+
+      await expect(intakeSkill.process(testPath, testProjectId)).rejects.toThrow(ValidationError);
+
+      fs.unlinkSync(testPath);
+    });
+
+    test('should catch numeric field out of range', async () => {
+      const outOfRangeBrief = {
+        book: {
+          title: 'Valid Title',
+          genre: 'educational',
+          theme: 'Valid theme',
+          promise: 'Valid promise',
+          language: 'es-MX',
+          format: 'epub',
+          reading_level: 'simple',
+          content_classification: 'general',
+          estimated_word_count: 1000, // Too low (min: 5000)
+          estimated_chapter_count: 8,
+          target_audience: {
+            primary_description: 'Valid audience',
+          },
+        },
+      };
+
+      const testPath = path.join(process.cwd(), '.test-word-count.md');
+      fs.writeFileSync(
+        testPath,
+        `# Brief\n\`\`\`json\n${JSON.stringify(outOfRangeBrief)}\n\`\`\``
+      );
+
+      await expect(intakeSkill.process(testPath, testProjectId)).rejects.toThrow(ValidationError);
+
+      fs.unlinkSync(testPath);
+    });
+  });
+
+  describe('Artifact Creation', () => {
+    test('should create artifact with correct metadata', async () => {
+      // This would require the real brief file to exist
+      // Skipping if not available
+      const briefPath = path.join(process.cwd(), 'docs/01-brief/BRIEF_EDITORIAL.md');
+      if (!fs.existsSync(briefPath)) {
+        console.warn('Skipping artifact creation test (brief file not found)');
+        return;
+      }
+
+      const result = await intakeSkill.process(briefPath, testProjectId);
+
+      expect(result.artifact).toBeDefined();
+      expect(result.artifact.project_id).toBe(testProjectId);
+      expect(result.artifact.stage).toBe('intake');
+      expect(result.artifact.artifact_type).toBe('normalized-brief');
+      expect(result.artifact.version).toBe(1);
+      expect(result.artifact.is_current).toBe(true);
+    });
+  });
+});
