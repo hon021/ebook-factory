@@ -28,5 +28,8 @@
     "typescript": "^5.0.0",
     "ts-node": "^10.9.0",
     "rimraf": "^5.0.0"
+  },
+  "allowScripts": {
+    "sqlite3@5.1.7": true
   }
 }

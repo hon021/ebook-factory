@@ -2,6 +2,7 @@
 /exports/
 /dist/
 /build/
+/node_modules/
 *.epub
 
 # Local secrets and environment settings
@@ -14,3 +15,7 @@
 *.bak
 .DS_Store
 Thumbs.db
+
+# Database
+*.db
+ebook-factory.db
