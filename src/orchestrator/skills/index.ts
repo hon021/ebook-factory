@@ -16,5 +16,5 @@
  */
 
 export { IntakeSkill, ValidationError, ValidationIssue, ValidationResult } from './intake';
-// export { ResearchSkill } from './research'; // Coming in Phase 2 Week 3
+export { ResearchSkill, ResearchError, Source, ResearchResult } from './research';
 // export { DesignSkill } from './design';     // Coming in Phase 2 Week 4
