@@ -2,9 +2,9 @@
 
 Fábrica editorial asistida por IA para producir ebooks de alta calidad en español e inglés. Orquesta un pipeline de 8 etapas con revisión humana en puntos clave.
 
-**Estado:** ✅ Foundation complete | Sistema operativo | Listo para Skills  
+**Estado:** ✅ Fase 2 COMPLETO | 3/3 Skills implementados | Listo para Gate 1  
 **GitHub:** [hon021/ebook-factory](https://github.com/hon021/ebook-factory)  
-**Timeline:** 7 semanas a lanzamiento (Dec 17, 2026)
+**Timeline:** 7 semanas a lanzamiento (Dec 17, 2026) | Gate 1: Nov 23
 
 ---
 
@@ -93,11 +93,11 @@ docs/
 - [x] Dev environment setup (Node.js, npm, tests passing)
 - [x] Repository published
 
-**Phase 2: Skills 1-3** (Starting Nov 6, 2026)
-- [ ] Skill 1: Intake (parse brief → normalize JSON)
-- [ ] Skill 2: Research (find sources → create dossier)
-- [ ] Skill 3: Design (refine promise → create outline)
-- [ ] Gate 1: Editorial Review (human decision)
+**Phase 2: Skills 1-3** ✅ COMPLETE (Nov 6-12, 2026)
+- [x] Skill 1: Intake (parse brief → normalize JSON) ✅ 307d2ec
+- [x] Skill 2: Research (find sources → create dossier) ✅ fab6986
+- [x] Skill 3: Design (refine promise → create outline) ✅ 148a18c
+- [ ] Gate 1: Editorial Review (human decision) ⏳ Nov 23
 
 **Phase 3: Skills 4-8** (After Gate 1 approval)
 - [ ] Skill 4: Sample Writing
@@ -113,12 +113,12 @@ docs/
 
 | Metric | Value |
 |--------|-------|
-| **Code** | 47K TypeScript (100% typed) |
+| **Code** | 50K+ TypeScript (100% typed, 0 build errors) |
 | **Database** | 8 tables + 3 views (SQLite) |
 | **Orchestrator Methods** | 30+ functional methods |
 | **Tests** | 8/8 passing |
-| **Documentation** | 110K+ (15+ guides) |
-| **GitHub Commits** | 14 (clean history) |
+| **Documentation** | 130K+ (15+ guides, 3 skill specs) |
+| **GitHub Commits** | 17 (clean history, co-authored) |
 | **Timeline** | 6-7 weeks to launch |
 | **Target** | 200+ sales (Dec 24, 2026) |
 
