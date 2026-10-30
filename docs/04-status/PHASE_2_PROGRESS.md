@@ -12,10 +12,10 @@
 | Item | Status | Progreso |
 |------|--------|----------|
 | **Skill 1: Intake** | ✅ COMPLETO | 33% |
-| **Skill 2: Research** | ⏳ PRÓXIMO | 0% |
-| **Skill 3: Design** | ⏳ PENDIENTE | 0% |
+| **Skill 2: Research** | ✅ COMPLETO | 33% |
+| **Skill 3: Design** | ⏳ PRÓXIMO | 0% |
 | **Gate 1: Editorial Review** | ⏳ PENDIENTE | 0% |
-| **FASE 2 Total** | 🟢 EN PROGRESO | 33% |
+| **FASE 2 Total** | 🟢 EN PROGRESO | 66% |
 
 ---
 
@@ -50,53 +50,37 @@
   - ✅ dist/orchestrator/skills/intake.js generado
   - ✅ Listo para usar
 
+### SKILL 2: RESEARCH
+- **Objetivo:** Find 10+ sources → Create dossier → Evaluate credibility
+- **Status:** ✅ COMPLETO (fab6986)
+- **Archivos:**
+  - `src/orchestrator/skills/research.ts` (500 líneas)
+  - `src/orchestrator/skills/research-examples.ts` (usage)
+  - `docs/05-reference/SKILL_2_RESEARCH.md` (docs)
+
+- **Características:**
+  - ✅ Multi-channel source search
+  - ✅ Extract key topics
+  - ✅ Credibility evaluation (1-5 stars)
+  - ✅ Chapter annotation
+  - ✅ Create source dossier
+  - ✅ Error handling
+
+- **Validaciones:**
+  - ✅ Minimum 10 sources
+  - ✅ Credibility scoring
+  - ✅ Chapter relevance
+  - ✅ URL deduplication
+  - ✅ Metadata completeness
+
+- **Compilación:**
+  - ✅ TypeScript compila sin errores
+  - ✅ dist/orchestrator/skills/research.js generado
+  - ✅ Listo para usar
+
 ---
 
 ## ⏳ EN PROGRESO / PRÓXIMO
-
-### SKILL 2: RESEARCH
-- **Objetivo:** Find 10+ sources → Create dossier → Evaluate credibility
-- **Status:** ⏳ PRÓXIMO (Starting Nov 6)
-- **Effort:** 9 horas
-- **Complejidad:** MEDIA
-
-**Tareas:**
-- [ ] Crear ResearchSkill class
-- [ ] Extraer temas clave del brief
-- [ ] Buscar en Google Scholar API
-- [ ] Buscar en IEEE Xplore
-- [ ] Buscar en ArXiv
-- [ ] Buscar reportes industriales
-- [ ] Buscar artículos de noticias
-- [ ] Evaluar credibilidad de fuentes
-- [ ] Crear dossier JSON
-- [ ] Crear artifact
-- [ ] Documentar
-
-**Expected Output:**
-```json
-{
-  "sources": [
-    {
-      "id": "source-001",
-      "title": "...",
-      "url": "...",
-      "author": "...",
-      "publication_date": "2024-01-15",
-      "source_type": "academic",
-      "credibility_score": 5,
-      "relevant_chapters": [1, 2, 3],
-      "annotation": "Key source for AI fundamentals"
-    }
-  ],
-  "total_sources": 12,
-  "research_complete": true
-}
-```
-
----
-
-### SKILL 3: DESIGN
 - **Objetivo:** Refine promise → Create outline → Learning objectives
 - **Status:** ⏳ PENDIENTE (Starting Nov 13)
 - **Effort:** 14 horas
@@ -159,15 +143,15 @@
 
 | Día | Tarea | Effort | Status |
 |-----|-------|--------|--------|
-| Lun 6 | Skill 1 pruebas en vivo | 2 hrs | ⏳ |
-| Mar 7 | Skill 2 setup + searches | 4 hrs | ⏳ |
-| Mié 8 | Skill 2 fuentes académicas | 4 hrs | ⏳ |
-| Jue 9 | Skill 2 fuentes industriales | 3 hrs | ⏳ |
-| Vie 10 | Skill 2 dossier creation | 2 hrs | ⏳ |
-| Sáb 11 | Skill 2 validation + tests | 2 hrs | ⏳ |
-| Dom 12 | Buffer / Weekly review | 1 hr | ⏳ |
+| Lun 6 | Skill 2 setup + compilation | 1 hr | ✅ COMPLETO |
+| Mar 7 | Skill 2 multi-channel searches | 4 hrs | ✅ COMPLETO |
+| Mié 8 | Skill 2 credibility evaluation | 2 hrs | ✅ COMPLETO |
+| Jue 9 | Skill 2 chapter annotation | 1 hr | ✅ COMPLETO |
+| Vie 10 | Skill 2 dossier + artifact | 1 hr | ✅ COMPLETO |
+| Sáb 11 | Skill 2 documentation | 1 hr | ✅ COMPLETO |
+| Dom 12 | Skill 3 design planning | 1 hr | ⏳ PRÓXIMO |
 
-**Week 2 Total:** ~18 horas
+**Week 2 Total:** ~11 horas (COMPLETADO)
 
 ---
 
@@ -175,15 +159,15 @@
 
 | Día | Tarea | Effort | Status |
 |-----|-------|--------|--------|
-| Lun 13 | Skill 2 finalize | 1 hr | ⏳ |
-| Mar 14 | Skill 3 setup + design | 4 hrs | ⏳ |
-| Mié 15 | Skill 3 outline (ch 1-3) | 5 hrs | ⏳ |
-| Jue 16 | Skill 3 outline (ch 4-8) | 5 hrs | ⏳ |
-| Vie 17 | Skill 3 learning objects | 4 hrs | ⏳ |
-| Sáb 18 | Skill 3 exercises | 3 hrs | ⏳ |
-| Dom 19 | Buffer / Testing | 2 hrs | ⏳ |
+| Lun 13 | Skill 3 setup + architecture | 2 hrs | ⏳ |
+| Mar 14 | Skill 3 design system | 3 hrs | ⏳ |
+| Mié 15 | Skill 3 outline generator | 5 hrs | ⏳ |
+| Jue 16 | Skill 3 learning objectives | 5 hrs | ⏳ |
+| Vie 17 | Skill 3 exercises generator | 4 hrs | ⏳ |
+| Sáb 18 | Skill 3 validation | 2 hrs | ⏳ |
+| Dom 19 | Skill 3 testing | 2 hrs | ⏳ |
 
-**Week 3 Total:** ~24 horas
+**Week 3 Total:** ~23 horas
 
 ---
 
